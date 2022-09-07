@@ -13,7 +13,7 @@ router.get('/', verify, async (req, res) => {
   }
 });
 
-router.get("/find/:id", async (req, res) => {
+router.get("/find/:id", verify, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, ...info } = user._doc;

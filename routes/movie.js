@@ -2,6 +2,16 @@ const router = require("express").Router();
 const Movie = require("../models/Movie");
 const verify = require("../verifyToken");
 
+router.get('/', verify, async (req, res) => {
+  try {
+   const movies =  await Movie.find();
+   res.status(200).json(movies);
+    
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
