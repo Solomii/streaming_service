@@ -6,12 +6,14 @@ const app = express();
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
+const movieRoute = require("./routes/movie");
 
 app.use(express.json());
 app.use(express.urlencoded({ extented: true }));
 
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use("/api/movies", movieRoute);
 
 
 app.get("*", (req, res) => {
